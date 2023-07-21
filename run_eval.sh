@@ -1,0 +1,1 @@
+python eval.py  --config=anodos_resnet50_config --trained_model=/mnt/266A47CE6A479A07/athena/yolo/data/weights/anodos_15_06_2023/yolact_resnet50_fpn_anodos_19_400.pth --images=/mnt/266A47CE6A479A07/athena/yolo/data/test/resized_1280_720:'/mnt/266A47CE6A479A07/athena/yolo/data/test/resized_1280_720/eval_results --top_k=1
