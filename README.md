@@ -1,6 +1,8 @@
 # YOLACT inference
 Contains the [YOLACT](https://github.com/dbolya/yolact) code, stripped down to include mostly scripts necessary for inference/evaluation.
 
+## Data
+The trained weights are uploaded [here](https://drive.google.com/drive/folders/1Y3ABMxa6Ehiq0x05IcRhxCJ2LV9LKjfl?usp=drive_link).
 ## Quantitative results
 Exporting the detected masks and bounding boxes into json files requires exporting your dataset into COCO format first so it can be used with used with the evaluation script. One way to do this is using the VGG annotation tool, which is described in this walkthrough.
 ### Short walkthrough 
@@ -23,7 +25,7 @@ The dataset name doesn't need to be in this format but I simply include the name
 
 6. Run the inference script `eval.py`, with the following arguments:
 	- `config`: Name of the training configuration. Can be found in `config.py`. The configuration used for this case is `anodos_resnet101_config_2023_06_29_210653`
-	- `trained_model`: absolute path of the trained weights file. Those are uploaded [here](https://drive.google.com/drive/folders/1Y3ABMxa6Ehiq0x05IcRhxCJ2LV9LKjfl?usp=drive_link).
+	- `trained_model`: absolute path of the trained weights file. 
 	- `output_coco_json`: To export the results as json files. Doesn't need a value. 
 	- `dataset`: name of the dataset defined in `config.py` (anodos_<video_name>)
 	- `bbox_det_file`, `mask_det_file`: absolute paths of the files you wish to save the bounding boxes and segmentations. If they don't exist, they will be created, otherwise they will be overwritten.
