@@ -29,6 +29,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import cv2
 import pprint 
+import nvidia_dlprof_pytorch_nvtx as nvtx
 
 def str2bool(v):
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
@@ -1062,7 +1063,7 @@ def print_maps(all_maps):
 
 if __name__ == '__main__':
     parse_args()
-
+    #nvtx.init(enable_function_stack=True)
     if args.config is not None:
         set_cfg(args.config)
 
@@ -1085,11 +1086,11 @@ if __name__ == '__main__':
         set_dataset(args.dataset)
 
     with torch.no_grad():
-        #if not os.path.exists('results'):
-         #   os.makedirs('results')
-        temp_dir = '/mnt/266A47CE6A479A07/athena/yolo/data/extracted_frames_sc03_ch01/resized_1280_720/test/results'
-        if not os.path.exists(temp_dir):
-            os.makedirs()
+        if not os.path.exists('results'):
+           os.makedirs('results')
+        # temp_dir = '/mnt/266A47CE6A479A07/athena/yolo/data/extracted_frames_sc03_ch01/resized_1280_720/test/results'
+        # if not os.path.exists(temp_dir):
+        #     os.makedirs()
 
         if args.cuda:
             cudnn.fastest = True
@@ -1111,6 +1112,7 @@ if __name__ == '__main__':
             dataset = None        
 
         print('Loading model...', end='')
+
         net = Yolact()
         net.load_weights(args.trained_model)
         net.eval()
